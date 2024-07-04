@@ -1,0 +1,36 @@
+<app-header title="Login"/>
+
+<ion-content [fullscreen]="true">
+
+    <div class="d-flex-center">
+        <form [formGroup]="form" class="auth-form" (ngSubmit)="submit()" (keypress.enter)="submit()">
+            <app-logo/>
+            <app-custom-input 
+                icon="mail-outline"
+                autocomplete="email"
+                [control]="form.controls.email"
+                label="Email"
+                type="email"
+            />
+    
+            <app-custom-input 
+                icon="lock-closed-outline"
+                [control]="form.controls.password"
+                label="Password"
+                type="password"
+            />
+
+            <p [routerLink]="['forgot-password']" routerLinkActive="router-link-active"  class="ion-text-end">Olvidaste tu contrasena?</p>
+            <!-- <app-custom-input icon="lock-closed-outline"/> -->
+             <ion-button mode="ios" [disabled]="form.invalid" class="submit"  type="submit" expand="block">
+                Ingresar
+                <ion-icon slot="end" name="log-in-outline"></ion-icon>
+             </ion-button>
+
+             <ion-button mode="ios" [routerLink]="['sign-up']" routerLinkActive="router-link-active"  class="ion-margin-top" fill="outline" expand="block">
+                Registrate
+                <ion-icon slot="end" name="person-add-outline"></ion-icon>
+             </ion-button>
+        </form>
+    </div>
+</ion-content>
